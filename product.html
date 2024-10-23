@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChicCloset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .product-images {
+          cursor: pointer;
+        }
+        .product-images img {
+          height: 150px;
+          margin-bottom: 10px;
+          object-fit: cover;
+        }
+        .main-product-image {
+          width: 100%;
+          max-width: 350px;
+          height: auto;
+        }
+        .product-details {
+          max-width: 500px;
+        }
+        .price {
+          font-size: 1.5rem;
+          color: #e74c3c;
+        }
+        .original-price {
+          text-decoration: line-through;
+          color: grey;
+        }
+        .discount {
+          color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <!-- navbar starts -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="./IMAGES/logo.png" alt="Logo" class="navbar-logo" />
+          <span class="brand-text">ChicCloset</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="search-bar">
+          <input type="text" placeholder="Search products..." />
+          <button>Search</button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" aria-expanded="false">Categories</a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="categoriesDropdown">
+                <li><a class="dropdown-item" href="men.html">Men</a></li>
+                <li><a class="dropdown-item" href="women.html">Women</a></li>
+                <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#new-arrivals">New Arrivals</a></li>
+                <li><a class="dropdown-item" href="#sale">Sale</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" aria-expanded="false">Support</a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="supportDropdown">
+                <li><a class="dropdown-item" href="contactus.html">Contact Us</a></li>
+                <li><a class="dropdown-item" href="#shipping">Shipping Info</a></li>
+                <li><a class="dropdown-item" href="#returns">Returns & Exchanges</a></li>
+              </ul>
+            </li>
+            <li class="nav-item position-relative">
+              <a href="wishlist.html" class="nav-link" aria-label="Wishlist">
+                <i class="bi bi-heart"></i>
+                <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill" id="wishlistCount">0</span>
+              </a>
+            </li>
+            <li class="nav-item position-relative">
+              <a href="#cart" class="nav-link" aria-label="Cart">
+                <i class="bi bi-cart"></i>
+                <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill" id="cartCount">0</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" aria-expanded="true">
+                <i class="bi bi-person-circle account-icon"></i>
+                <span class="d-none d-md-inline ms-2">My Account</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#profile"><i class="bi bi-person me-2"></i>View Profile</a></li>
+                <li><a class="dropdown-item" href="#orders"><i class="bi bi-bag me-2"></i>My Orders</a></li>
+                <li><a class="dropdown-item" href="#settings"><i class="bi bi-gear me-2"></i>Account Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar ends -->
+
+    <!-- Product Page starts -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left image thumbnails -->
+            <div class="col-md-2">
+                <div class="product-images">
+                    <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/8/c/8c27d05DRBS02110994_2.jpg" alt="Product 1" onclick="changeImage(this.src)" />
+                    <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/8/c/8c27d05DRBS02110994_3.jpg" alt="Product 2" onclick="changeImage(this.src)" />
+                    <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/8/c/8c27d05DRBS02110994_4.jpg" alt="Product 3" onclick="changeImage(this.src)" />
+                    <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/8/c/8c27d05DRBS02110994_5.jpg" alt="Product 4" onclick="changeImage(this.src)" />
+                </div>
+            </div>
+
+            <!-- Main Product Image -->
+            <div class="col-md-4">
+                <div class="main-product-image">
+                    <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/8/c/8c27d05DRBS02110994_1.jpg" id="main-product-image" alt="Main Product" class="img-fluid" />
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="col-md-6 product-details">
+                <h2>Ethnovog</h2>
+                <p>Ready To Wear Red Printed Viscose Maxi Dress</p>
+                <div class="price">
+                    ₹2,940 <span class="original-price">₹7,735</span>
+                    <span class="discount">62% Off</span>
+                </div>
+
+                <!-- Size Selection -->
+                <h5>Select Size:</h5>
+                <div class="btn-group" role="group" aria-label="Size selection">
+                    <input type="radio" class="btn-check" id="sizeXS" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXS">XS</label>
+
+                    <input type="radio" class="btn-check" id="sizeS" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeS">S</label>
+
+                    <input type="radio" class="btn-check" id="sizeM" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeM">M</label>
+
+                    <input type="radio" class="btn-check" id="sizeL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeL">L</label>
+
+                    <input type="radio" class="btn-check" id="sizeXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXL">XL</label>
+
+                    <input type="radio" class="btn-check" id="sizeXXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXXL">2XL</label>
+
+                    <input type="radio" class="btn-check" id="sizeXXXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXXXL">3XL</label>
+                </div>
+
+                <!-- Add to Wishlist and Cart Buttons -->
+                <div class="mt-3">
+                    <button class="btn btn-outline-secondary" onclick="addToWishlist()">Add to Wishlist</button>
+                    <button class="btn btn-dark" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Purple Strip -->
+<div class="bg-purple text-white py-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <h5 class="m-0">How Can We Help?</h5>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-chat-dots"></i> Chat With An Expert
+          </a>
+        </div>
+        <div class="col-md-4 text-end">
+          <a href="#" class="text-white text-decoration-none me-3">
+            <i class="bi bi-envelope"></i> Email Us
+          </a>
+          <span><i class="bi bi-telephone"></i> 800.885.5050</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Footer Section -->
+<footer class="bg-light text-dark">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Support & Service Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Support & Service</h5>
+          <ul class="list-unstyled">
+            <li><a href="contactus.html" class="text-dark">Contact Us</a></li>
+            <li><a href="#" class="text-dark">FAQ</a></li>
+            <li><a href="#" class="text-dark">Chat Now</a></li>
+            <li><a href="#" class="text-dark">Warranties & Guarantees</a></li>
+            <li><a href="#" class="text-dark">Return & Exchange</a></li>
+          </ul>
+        </div>
+  
+        <!-- Shop Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Shop</h5>
+          <ul class="list-unstyled">
+            <li><a href="men.html" class="text-dark">Men</a></li>
+            <li><a href="women.html" class="text-dark">Women</a></li>
+            <li><a href="kids.html" class="text-dark">Kids</a></li>
+          </ul>
+        </div>
+  
+        <!-- About Us Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">About Us</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">About Us</a></li>
+            <li><a href="#" class="text-dark">Reviews</a></li>
+            <li><a href="#" class="text-dark">Blog</a></li>
+            <li><a href="#" class="text-dark">Careers</a></li>
+          </ul>
+        </div>
+  
+        <!-- Subscribe Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Subscribe To Our Newsletter</h5>
+          <form>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBMIT</button>
+            </div>
+          </form>
+          <div class="mt-4 social-icons">
+            <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-light">
+      <span class="text-dark">© 2024 ChicCloset. All Rights Reserved.</span>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Privacy Policy</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Terms of Use</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Accessibility</a>
+    </div>
+  </footer>
+    <!-- Product Page ends -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for dynamic image change -->
+    <script>
+        function changeImage(imageUrl) {
+            document.getElementById("main-product-image").src = imageUrl;
+        }
+
+        let cartCount = 0;
+        let wishlistCount = 0;
+
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cartCount').innerText = cartCount; // Update the cart count badge
+        }
+
+        function addToWishlist() {
+            wishlistCount++;
+            document.getElementById('wishlistCount').innerText = wishlistCount; // Update the wishlist count badge
+        }
+    </script>
+</body>
+</html>
