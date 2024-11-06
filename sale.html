@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sale Coming Soon - ChicCloset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #6c4c7c;
+        }
+        
+        .navbar-brand .brand-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8a2be2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #8a2be2, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text; /* For non-WebKit browsers */
+            transition: all 0.3s ease;
+        }
+        .navbar-brand:hover .brand-text {
+            text-shadow: 2px 2px 4px rgba(138, 43, 226, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-item {
+            color: #333;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f0e6f5;
+            color: #6c4c7c;
+        }
+        
+        .icon-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .icon-button:hover {
+            color: #6c4c7c;
+            transform: scale(1.1);
+        }
+        
+        .search-bar {
+            display: flex;
+            width: 30rem;
+            margin-left: 15rem;
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: #5b0c5b;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background-color: #be24a5;
+        }
+                        
+        .sale-coming-soon {
+            background-color: #f8f9fa;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .sale-coming-soon h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #6c4c7c;
+            margin-bottom: 1rem;
+        }
+        
+        .sale-coming-soon p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown-item {
+            margin: 0 1rem;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #6c4c7c;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            min-width: 80px;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+        .seconds-container {
+            position: relative;
+            overflow: hidden;
+            height: 72px; /* Adjust based on your font size */
+        }
+
+        .seconds-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .notify-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .banner-cards {
+            margin-top: 4rem;
+        }
+
+        .banner-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-card:hover {
+            transform: translateY(-5px);
+        }
+        .banner-card img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+        }
+
+        .banner-card-content {
+            padding: 1.5rem;
+        }
+
+        .banner-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #6c4c7c;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .bg-purple {
+            background-color: #6c4c7c;
+          }
+          
+          .bg-purple a:hover {
+            text-decoration: underline;
+          }
+          
+        footer {
+            background-color: #f8f9fa;
+          }
+          
+          footer h5 {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+          
+          footer ul li {
+            margin-bottom: 0.5rem;
+          }
+          
+          footer a {
+            color: #333;
+            text-decoration: none;
+          }
+          
+          footer a:hover {
+            color: #6c4c7c;
+            text-decoration: underline;
+          }
+          
+          footer .form-control {
+            border-radius: 0;
+          }
+          
+          footer .btn-outline-secondary {
+            border-radius: 0;
+            background-color: #333;
+            color: white;
+            border: none;
+          }
+          footer .btn-outline-secondary:hover {
+            background-color: #6c4c7c;
+          }
+          
+          footer .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+          }
+          
+          footer .copyright {
+            font-size: 0.875rem;
+          }
+                    
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="./IMAGES/logo.png" alt="Logo" style="width: 70px; height: auto; margin-right: 10px;" />
+            <span class="brand-text">ChicCloset</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+          </div>
+      
+          <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link" href="homepage.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="categoriesDropdown">
+                    <li><a class="dropdown-item" href="men.html">Men</a></li>
+                    <li><a class="dropdown-item" href="women.html">Women</a></li>
+                    <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="new arrivals.html">New Arrivals</a></li>
+                    <li><a class="dropdown-item" href="sale.html">Sale</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Support
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="supportDropdown">
+                    <li><a class="dropdown-item" href="contactus.html">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="#shipping">Shipping Info</a></li>
+                    <li><a class="dropdown-item" href="#returns">Returns & Exchanges</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item position-relative">
+                  <a href="wishlist.html" class="nav-link" aria-label="Wishlist">
+                    <i class="bi bi-heart"></i>
+                  </a>
+                </li>
+                <li class="nav-item position-relative">
+                    <a href="cart.html" class="nav-link" aria-label="Cart">
+                      <i class="bi bi-cart"></i>
+                      <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">
+                           0     
+                      </span>
+                  </a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="https://th.bing.com/th/id/OIP.VBK4TEyP3mhqoB5B2g8PqAHaHa?w=208&h=208&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                          alt="User Profile" class="profile-image rounded-circle" style="width: 35px; height: 35px;" />
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="userDropdown">
+                      <li><a class="dropdown-item" href="./login/login/login.html">Profile</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+    </div>
+    </nav>
+      
+    <section class="sale-coming-soon">
+        <div class="container">
+            <h1>Exciting Sale Coming Soon!</h1>
+            <p>Get ready for amazing deals on your favorite fashion items.</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <div class="notify-form">
+                <h3 class="mb-3">Be the first to know!</h3>
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" aria-describedby="button-addon2" required>
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Notify Me</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="banner-cards">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="banner-card">
+                            <img src="https://changedfashion.in/cdn/shop/articles/custom_resized_999f02f3-5b65-4e9a-bba6-d991ccf913b4_-_women.webp?v=1709013614" alt="Up to 50% Off" class="banner-image">
+                            <div class="banner-card-content">
+                                <h3>Up to 50% Off</h3>
+                                <p>Enjoy discounts on selected items across all categories.</p>
+                                <a href="#" class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="banner-card">
+                            <img src="https://www.vogpap.com/cdn/shop/products/SHORT_WESTERN_DRESS_5002_-_VOGPAP.jpg?v=1704693162" alt="New Arrivals" class="banner-image">
+                            <div class="banner-card-content">
+                                <h3>New Arrivals</h3>
+                                <p>Discover the latest fashion trends at unbeatable prices.</p>
+                                <a href="#" class="btn btn-outline-primary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="banner-card">
+                            <img src="https://www.madish.in/cdn/shop/files/FlaredWideLegHighWaistJeans2x3May2024LR-1-2.webp?v=1723326178&width=800" alt="Exclusive Deals" class="banner-image">
+                            <div class="banner-card-content">
+                                <h3>Exclusive Deals</h3>
+                                <p>Sign up for our newsletter to access members-only offers.</p>
+                                <a href="#" class="btn btn-outline-primary">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Purple Strip -->
+   <div class="bg-purple text-white py-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <h5 class="m-0">How Can We Help?</h5>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-chat-dots"></i> Chat With An Expert
+          </a>
+        </div>
+        <div class="col-md-4 text-end">
+          <a href="#" class="text-white text-decoration-none me-3">
+            <i class="bi bi-envelope"></i> Email Us
+          </a>
+          <span><i class="bi bi-telephone"></i> 800.885.5050</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <!-- Footer Section -->
+<footer class="bg-light text-dark">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Support & Service Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Support & Service</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">Contact Us</a></li>
+            <li><a href="#" class="text-dark">FAQ</a></li>
+            <li><a href="#" class="text-dark">Chat Now</a></li>
+            <li><a href="#" class="text-dark">Warranties & Guarantees</a></li>
+            <li><a href="#" class="text-dark">Return & Exchange</a></li>
+          </ul>
+        </div>
+  
+        <!-- Shop Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Shop</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">Men</a></li>
+            <li><a href="#" class="text-dark">Women</a></li>
+            <li><a href="#" class="text-dark">Kids</a></li>
+          </ul>
+        </div>
+  
+        <!-- About Us Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">About Us</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">About Us</a></li>
+            <li><a href="#" class="text-dark">Reviews</a></li>
+            <li><a href="#" class="text-dark">Blog</a></li>
+            <li><a href="#" class="text-dark">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Subscribe Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Subscribe To Our Newsletter</h5>
+          <form>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBMIT</button>
+            </div>
+          </form>
+          <div class="mt-4 social-icons">
+            <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-light">
+      <span class="text-dark">© 2024 ChicCloset. All Rights Reserved.</span>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Privacy Policy</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Terms of Use</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Accessibility</a>
+    </div>
+  </footer>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script >
+        const countDownDate = new Date("2024-12-30T00:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+        document.querySelector(".countdown").innerHTML = "<h2>SALE HAS STARTED!</h2>";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+    document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
