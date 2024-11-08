@@ -1,0 +1,92 @@
+/* Cart Sidebar Styles */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially hidden on the right */
+    width: 300px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .cart-sidebar.show {
+    right: 0;
+  }
+  
+  .cart-sidebar-content {
+    padding: 20px;
+  }
+  
+  .cart-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .cart-items-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cart-items-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .cart-items-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .cart-footer button {
+    width: 45%;
+  }
+  
+  .cart-footer button:hover {
+    background-color: #0056b3;
+  }
+  /* Style for the close icon */
+  .btn-close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #ffffff;
+      cursor: pointer;
+  }
+  
+  .btn-close-icon:hover {
+      color: #ff0000; /* Optional hover color for the close icon */
+  }
+  
+  
+  
+  /* Smooth transition effect for Cart Icon */
+  .nav-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .nav-item:hover {
+    transform: scale(1.1);
+  }

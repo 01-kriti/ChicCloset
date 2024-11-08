@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('BG.png');
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 690px;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(216, 217, 219, 0.213);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px #5b0c5b;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin-bottom: 60px;
+
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #5b0c5b;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #5b0c5b;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #be24a5;
+    outline: none;
+}
+
+button {
+    color: white;
+    text-decoration: none;
+    background-color: #5b0c5b;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #be24a5;
+}
+
+p {
+    color: #112d66;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+
+body {
+    padding-top: 80px;
+}
+
+footer {
+    background-color: #bfc3cc24;
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    padding: 1px 4px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1px 0 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
+}

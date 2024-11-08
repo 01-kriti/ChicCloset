@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChicCloset</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+    
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    .navbar-logo {
+        width: 80px;
+        height: auto;
+        margin-right: 10px;
+      }
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+      }
+    .navbar-nav .nav-link {
+        color: #333;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #6c4c7c;
+    }
+    .navbar-brand .brand-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #8a2be2;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: linear-gradient(45deg, #8a2be2, #ff69b4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; /* For non-WebKit browsers */
+        transition: all 0.3s ease;
+    }
+    
+    
+      .navbar-brand:hover .brand-text {
+        text-shadow: 2px 2px 4px rgba(138, 43, 226, 0.3);
+        transform: scale(1.05);
+      }
+    .dropdown-menu {
+        border: none;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+        margin-right: 2rem;
+    }
+
+    .dropdown-item {
+        color: #333;
+        padding: 0.5rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f0e6f5;
+        color: #6c4c7c;
+    }
+
+    .animate {
+        animation-duration: 0.3s;
+        -webkit-animation-duration: 0.3s;
+        animation-fill-mode: both;
+        -webkit-animation-fill-mode: both;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateY(1rem);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+        0% {
+            transform: translateY(1rem);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes slideIn {
+        0% {
+            -webkit-transform: transform;
+            -webkit-opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0);
+            -webkit-opacity: 1;
+        }
+        0% {
+            -webkit-transform: translateY(1rem);
+            -webkit-opacity: 0;
+        }
+    }
+
+    .slideIn {
+        -webkit-animation-name: slideIn;
+        animation-name: slideIn;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        margin-left: -2rem;
+   
+    }
+
+    .badge {
+        font-size: 0.6rem;
+        padding: 0.2em 0.4em;
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+        color: #6c4c7c;
+    }
+
+    .navbar-brand:hover {
+        color: #533a5f;
+    }
+
+    .icon-button {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+    .search-bar {
+            display: flex;
+          
+            width: 25rem;
+            margin-left: 9rem;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: #5b0c5b;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #be24a5;
+        }
+
+    .icon-button:hover {
+        color: #6c4c7c;
+        transform: scale(1.1);
+    }
+    .account-icon {
+        font-size: 1.5rem;
+        color: #6c4c7c;
+        transition: all 0.3s ease;
+    }
+
+    .nav-item.dropdown:hover .account-icon {
+        transform: scale(1.1);
+    }
+
+    .dropdown-item i {
+        width: 1.25rem;
+        text-align: center;
+    }
+
+    @media (max-width: 992px) {
+        .search-bar {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .hero-image {
+        position: relative;
+        height:120vh;
+        min-height: 300px;
+        max-height: 900px;
+        background: url("./IMAGES/hero.png") no-repeat  ;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold; 
+            margin-bottom: 15px;
+        }
+        .section-content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-radius: 8px; 
+        }
+        .icon-section {
+            font-size: 3rem;
+            color: #f8a631;
+        }
+        .carousel-item {
+            transition: transform 0.5s ease, opacity 0.5s ease; 
+        }
+        .carousel-item-next,
+        .carousel-item-prev,
+        .carousel-item.active {
+            display: block; 
+        }
+        .carousel-item-next,
+        .carousel-item-prev {
+            position: absolute; 
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0; 
+            transition: opacity 0.5s ease; 
+        }
+            
+        .carousel-item.active {
+            opacity: 1; 
+        }
+        .bg-purple {
+  background-color: #6c4c7c;
+}
+
+.bg-purple a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #f8f9fa;
+}
+
+footer h5 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #6c4c7c;
+  text-decoration: underline;
+}
+
+footer .form-control {
+  border-radius: 0;
+}
+
+footer .btn-outline-secondary {
+  border-radius: 0;
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+footer .btn-outline-secondary:hover {
+  background-color: #6c4c7c;
+}
+
+footer .social-icons a {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+footer .copyright {
+  font-size: 0.875rem;
+}
+  
+  
+  .dropdown-item i {
+            width: 1.25rem;
+            text-align: center;
+          }
+          
+ .nav-item.dropdown .profile-image {
+            transition: transform 0.3s ease;
+          }
+          
+.nav-item.dropdown:hover .profile-image {
+            transform: scale(1.1);
+          }
+          
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .rating-number {
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .discount {
+            color: #e44d26;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        .carousel-item.active {
+            opacity: 1; 
+        }
+
+          
+</style>   
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="/IMAGES/logo.png" alt="Logo" class="navbar-logo" />
+        <span class="brand-text">ChicCloset</span>
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/homepage.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
+                         aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="categoriesDropdown">
+                        <li><a class="dropdown-item" href="/men.html">Men</a></li>
+                        <li><a class="dropdown-item" href="/women.html">Women</a></li>
+                        <li><a class="dropdown-item" href="/kids.html">Kids</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/new arrivals.html">New Arrivals</a></li>
+                        <li><a class="dropdown-item" href="/sale.html">Sale</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button"
+                      aria-expanded="false">
+                        Support
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="supportDropdown">
+                        <li><a class="dropdown-item" href="/contactus.html">Contact Us</a></li>
+                        <li><a class="dropdown-item" href="#shipping">Shipping Info</a></li>
+                        <li><a class="dropdown-item" href="#returns">Returns & Exchanges</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item position-relative">
+                    <a href="/wishlist.html" class="nav-link" aria-label="Wishlist">
+                        <i class="bi bi-heart"></i>
+                    </a>
+                </li>
+                <li class="nav-item position-relative">
+                    <a href="/cart.html" class="nav-link" aria-label="Cart">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">
+                            0
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                         aria-expanded="true">
+                        <i class="bi bi-person-circle account-icon"></i>
+                        <span class="d-none d-md-inline ms-2">My Account</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/login/login/login.html"><i class="bi bi-person me-2"></i>View Profile</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="product-container">
+    <div class="product-card">
+        <img src="tshirts/10001.jpg" alt="Unisex Round Neck Pure Cotton T-shirt" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Aero Armour</h2>
+            <p class="product-description">Unisex Round Neck Pure Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.4 | 83</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 1119</span>
+                <span class="original-price">Rs. 2799</span>
+                <span class="discount">(60% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10002.jpg" alt="U.S. Polo Assn." class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">U.S. Polo Assn.</h2>
+            <p class="product-description">Embroidered Logo Pure Cotton Lounge T-shirts</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.0 | 2.4k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 835</span>
+                <span class="original-price">Rs. 2199</span>
+                <span class="discount">(62% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10003.jpg" alt="Levis" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Levis</h2>
+            <p class="product-description">Levi's 025 Round Neck Cotton T-Shirt for Men with Smartskin Technology</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.1 | 1.6k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 831</span>
+                <span class="original-price">Rs. 2599</span>
+                <span class="discount">(68% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10004.jpg" alt="Embroidered Logo Pure Cotton Lounge T-shirts" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">SASSAFRAS</h2>
+            <p class="product-description">Embroidered Logo Pure Cotton Lounge T-shirts</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.2 | 266</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 839</span>
+                <span class="original-price">Rs. 2399</span>
+                <span class="discount">(65% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="product-container">
+    <div class="product-card">
+        <img src="tshirts/10005.jpg" alt="Jockey" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Jockey</h2>
+            <p class="product-description">Combed Cotton Rich V Neck Half Sleeve Tshirt -2726</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.4 | 83</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 1119</span>
+                <span class="original-price">Rs. 2799</span>
+                <span class="discount">(60% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10006.jpg" alt="Urbano Fashion" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Urbano Fashion</h2>
+            <p class="product-description">Men Teal Green Slim Fit Tropical Printed Pure Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.0 | 2.4k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 835</span>
+                <span class="original-price">Rs. 2199</span>
+                <span class="discount">(62% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10007.jpg" alt="Aero Armour" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Aero Armour</h2>
+            <p class="product-description">Typography Printed Pure Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.1 | 1.6k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 831</span>
+                <span class="original-price">Rs. 2599</span>
+                <span class="discount">(68% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10008.jpg" alt="Lux Cozi" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Lux Cozi</h2>
+            <p class="product-description">Polo Collar Lounge Tshirts</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.2 | 266</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 839</span>
+                <span class="original-price">Rs. 2399</span>
+                <span class="discount">(65% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="product-container">
+    <div class="product-card">
+        <img src="tshirts/10009.jpg" alt="Crazymonk" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Crazymonk</h2>
+            <p class="product-description">Unisex Anime Printed Oversized T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.4 | 83</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 1119</span>
+                <span class="original-price">Rs. 2799</span>
+                <span class="discount">(60% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10010.jpg" alt="Maniac" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Maniac</h2>
+            <p class="product-description">Colourblocked Polo Collar Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.0 | 2.4k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 835</span>
+                <span class="original-price">Rs. 2199</span>
+                <span class="discount">(62% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10011.webp" alt="BULLMER" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">BULLMER</h2>
+            <p class="product-description">Tribal Printed Oversized Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.1 | 1.6k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 831</span>
+                <span class="original-price">Rs. 2599</span>
+                <span class="discount">(68% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/10012.webp" alt="Maniac" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Maniac</h2>
+            <p class="product-description">Tribal Printed Oversized Cotton T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.2 | 266</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 839</span>
+                <span class="original-price">Rs. 2399</span>
+                <span class="discount">(65% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="product-container">
+    <div class="product-card">
+        <img src="tshirts/100013.jpg" alt="Roadster" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Roadster</h2>
+            <p class="product-description">Men Solid Polo Collar Relaxed Fit T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.4 | 83</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 1119</span>
+                <span class="original-price">Rs. 2799</span>
+                <span class="discount">(60% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/100014.jpg" alt="HRX by Hrithik Roshan" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">HRX by Hrithik Roshan</h2>
+            <p class="product-description">Men Typography Printed Rapid-Dry Training Sports T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.0 | 2.4k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 835</span>
+                <span class="original-price">Rs. 2199</span>
+                <span class="discount">(62% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/100015.jpg" alt="Roadster Women High-Rise Bootcut Jeans" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Roadster</h2>
+            <p class="product-description">Men T-Shirts</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.1 | 1.6k</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 831</span>
+                <span class="original-price">Rs. 2599</span>
+                <span class="discount">(68% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="tshirts/100016.jpg" alt="StyleCast" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">StyleCast</h2>
+            <p class="product-description">Men Polo Collar Applique T-shirt</p>
+            <div class="product-rating">
+                <span class="star">★★★★☆</span>
+                <span class="rating-number">4.2 | 266</span>
+            </div>
+            <div class="product-price-info">
+                <span class="product-price">Rs. 839</span>
+                <span class="original-price">Rs. 2399</span>
+                <span class="discount">(65% OFF)</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    
+      <!-- Purple Strip -->
+<div class="bg-purple text-white py-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <h5 class="m-0">How Can We Help?</h5>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-chat-dots"></i> Chat With An Expert
+          </a>
+        </div>
+        <div class="col-md-4 text-end">
+          <a href="#" class="text-white text-decoration-none me-3">
+            <i class="bi bi-envelope"></i> Email Us
+          </a>
+          <span><i class="bi bi-telephone"></i> 800.885.5050</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+<!-- Footer Section -->
+<footer class="bg-light text-dark">
+  <div class="container py-5">
+    <div class="row">
+      <!-- Support & Service Column -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-uppercase mb-4">Support & Service</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark">Contact Us</a></li>
+          <li><a href="#" class="text-dark">FAQ</a></li>
+          <li><a href="#" class="text-dark">Chat Now</a></li>
+          <li><a href="#" class="text-dark">Warranties & Guarantees</a></li>
+          <li><a href="#" class="text-dark">Return & Exchange</a></li>
+        </ul>
+      </div>
+
+      <!-- Shop Column -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-uppercase mb-4">Shop</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark">Men</a></li>
+          <li><a href="#" class="text-dark">Women</a></li>
+          <li><a href="#" class="text-dark">Kids</a></li>
+        </ul>
+      </div>
+
+      <!-- About Us Column -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-uppercase mb-4">About Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark">About Us</a></li>
+          <li><a href="#" class="text-dark">Reviews</a></li>
+          <li><a href="#" class="text-dark">Blog</a></li>
+          <li><a href="#" class="text-dark">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Subscribe Column -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <h5 class="text-uppercase mb-4">Subscribe To Our Newsletter</h5>
+        <form>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBMIT</button>
+          </div>
+        </form>
+        <div class="mt-4 social-icons">
+          <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-dark me-3"><i class="bi bi-pinterest"></i></a>
+          <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-light">
+    <span class="text-dark">© 2024 ChicCloset. All Rights Reserved.</span>
+    <span class="mx-2">|</span>
+    <a href="#" class="text-dark">Privacy Policy</a>
+    <span class="mx-2">|</span>
+    <a href="#" class="text-dark">Terms of Use</a>
+    <span class="mx-2">|</span>
+    <a href="#" class="text-dark">Accessibility</a>
+  </div>
+</footer>
+<script src="scr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+      
+    </script>
+  </body>
+</html>
