@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChicCloset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .product-images {
+          cursor: pointer;
+        }
+        .product-images img {
+          height: 150px;
+          margin-bottom: 10px;
+          object-fit: cover;
+        }
+        .main-product-image {
+          width: 100%;
+          max-width: 350px;
+          height: auto;
+        }
+        .product-details {
+          max-width: 500px;
+        }
+        .price {
+          font-size: 1.5rem;
+          color: #e74c3c;
+        }
+        .original-price {
+          text-decoration: line-through;
+          color: grey;
+        }
+        .discount {
+          color: #2ecc71;
+        }
+        /* Cart Sidebar styles */
+        /* Cart Sidebar Styles */
+/* Cart Sidebar Styles */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Initially hidden on the right */
+  width: 300px;
+  height: 100%;
+  background-color: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.cart-sidebar.show {
+  right: 0;
+}
+
+.cart-sidebar-content {
+  padding: 20px;
+}
+
+.cart-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.cart-items-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-items-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  position: relative;
+}
+
+.cart-items-list li:last-child {
+  border-bottom: none;
+}
+
+.cart-item button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cart-footer button {
+  width: 45%;
+}
+
+.cart-footer button:hover {
+  background-color: #0056b3;
+}
+/* Style for the close icon */
+.btn-close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-close-icon:hover {
+    color: #ff0000; /* Optional hover color for the close icon */
+}
+
+
+
+/* Smooth transition effect for Cart Icon */
+.nav-item {
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover {
+  transform: scale(1.1);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+      <button onclick="closeCartSidebar()" class="btn-close-icon" aria-label="Close">
+        <i class="bg-purple rounded bi bi-x"></i> <!-- Use "bi bi-x" for Bootstrap Icon, or replace with your preferred icon class -->
+    </button>
+      <div class="cart-sidebar-content">
+        <h3 class="cart-title">Your Cart</h3>
+        <ul id="cartItemsList" class="cart-items-list">
+          <!-- Cart items will be dynamically added here -->
+        </ul>
+        <div class="cart-footer">
+          <button class="btn btn-danger" onclick="clearCart()">Clear Cart</button>
+          <a class="btn btn-primary" href="/cart.html">Checkout</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- navbar starts -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="./IMAGES/logo.png" alt="Logo" class="navbar-logo" />
+          <span class="brand-text">ChicCloset</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="search-bar">
+          <input type="text" placeholder="Search products..." />
+          <button>Search</button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="homepage.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" aria-expanded="false">Categories</a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="categoriesDropdown">
+                <li><a class="dropdown-item" href="men.html">Men</a></li>
+                <li><a class="dropdown-item" href="women.html">Women</a></li>
+                <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="new arrivals.html">New Arrivals</a></li>
+                <li><a class="dropdown-item" href="sale.html">Sale</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" aria-expanded="false">Support</a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="supportDropdown">
+                <li><a class="dropdown-item" href="contactus.html">Contact Us</a></li>
+                <li><a class="dropdown-item" href="#shipping">Shipping Info</a></li>
+                <li><a class="dropdown-item" href="#returns">Returns & Exchanges</a></li>
+              </ul>
+            </li>
+            <li class="nav-item position-relative">
+              <a href="wishlist.html" class="nav-link" aria-label="Wishlist">
+                <i class="bi bi-heart"></i>
+                <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill" id="wishlistCount">0</span>
+              </a>
+            </li>
+            <li class="nav-item position-relative">
+              <a href="#cart" class="nav-link" aria-label="Cart" onclick="toggleCartSidebar()" >
+                <i class="bi bi-cart"></i>
+                <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill" id="cartCount">0</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar ends -->
+
+    <!-- Product Page starts -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left image thumbnails -->
+            <div class="col-md-2">
+                <div class="product-images">
+                  <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/h/k/q/xl-sscs24-csmssrt6019-campus-sutra-original-imagyzrswwhtbc4d.jpeg?q=70&crop=false" alt="Product 1" onclick="changeImage(this.src)" /><br>
+                  <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/b/7/t/xl-sscs24-csmssrt6019-campus-sutra-original-imagyzrskenp3fdm.jpeg?q=70&crop=false"alt="Product 2" onclick="changeImage(this.src)" /><br>
+                </div>
+            </div>
+            <br>
+            <!-- Main Product Image -->
+            <div class="col-md-4">
+                <div class="main-product-image">
+                  <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/h/k/q/xl-sscs24-csmssrt6019-campus-sutra-original-imagyzrswwhtbc4d.jpeg?q=70&crop=false"alt="Product 1" id="mainProductImage" class="img-fluid" style="max-height: 500px; width: auto;"/>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="col-md-6 product-details">
+                <h2>Aero Armour</h2>
+                <p>Unisex Round Neck Pure Cotton Shirt</p>
+                <div class="price">
+                  RRs. 1119<span class="original-price">Rs. 2799</span>
+                  <span class="discount">(60% OFF)</span>
+                </div>
+
+                <!-- Size Selection -->
+                <h5>Select Size:</h5>
+                <div class="btn-group" role="group" aria-label="Size selection">
+                    <input type="radio" class="btn-check" id="sizeXS" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXS">XS</label>
+
+                    <input type="radio" class="btn-check" id="sizeS" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeS">S</label>
+
+                    <input type="radio" class="btn-check" id="sizeM" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeM">M</label>
+
+                    <input type="radio" class="btn-check" id="sizeL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeL">L</label>
+
+                    <input type="radio" class="btn-check" id="sizeXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXL">XL</label>
+
+                    <input type="radio" class="btn-check" id="sizeXXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXXL">2XL</label>
+
+                    <input type="radio" class="btn-check" id="sizeXXXL" name="size" />
+                    <label class="btn btn-outline-dark" for="sizeXXXL">3XL</label>
+                </div>
+
+                <!-- Add to Wishlist and Cart Buttons -->
+                <div class="mt-3">
+                    <button class="btn btn-outline-secondary" onclick="addToWishlist()">Add to Wishlist</button>
+                    <button class="btn btn-dark" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+        <!-- Purple Strip -->
+<div class="bg-purple text-white py-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <h5 class="m-0">How Can We Help?</h5>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-chat-dots"></i> Chat With An Expert
+          </a>
+        </div>
+        <div class="col-md-4 text-end">
+          <a href="#" class="text-white text-decoration-none me-3">
+            <i class="bi bi-envelope"></i> Email Us
+          </a>
+          <span><i class="bi bi-telephone"></i> 800.885.5050</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Footer Section -->
+<footer class="bg-light text-dark">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Support & Service Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Support & Service</h5>
+          <ul class="list-unstyled">
+            <li><a href="contactus.html" class="text-dark">Contact Us</a></li>
+            <li><a href="#" class="text-dark">FAQ</a></li>
+            <li><a href="#" class="text-dark">Chat Now</a></li>
+            <li><a href="#" class="text-dark">Warranties & Guarantees</a></li>
+            <li><a href="#" class="text-dark">Return & Exchange</a></li>
+          </ul>
+        </div>
+  
+        <!-- Shop Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Shop</h5>
+          <ul class="list-unstyled">
+            <li><a href="men.html" class="text-dark">Men</a></li>
+            <li><a href="women.html" class="text-dark">Women</a></li>
+            <li><a href="kids.html" class="text-dark">Kids</a></li>
+          </ul>
+        </div>
+  
+        <!-- About Us Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">About Us</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">About Us</a></li>
+            <li><a href="#" class="text-dark">Reviews</a></li>
+            <li><a href="#" class="text-dark">Blog</a></li>
+            <li><a href="#" class="text-dark">Careers</a></li>
+          </ul>
+        </div>
+  
+        <!-- Subscribe Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-4">Subscribe To Our Newsletter</h5>
+          <form>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBMIT</button>
+            </div>
+          </form>
+          <div class="mt-4 social-icons">
+            <a href="#" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark me-3"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-light">
+      <span class="text-dark">© 2024 ChicCloset. All Rights Reserved.</span>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Privacy Policy</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Terms of Use</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="text-dark">Accessibility</a>
+    </div>
+  </footer>
+    <!-- Product Page ends -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for dynamic image change -->
+    <script src="cart.js"></script>
+  
+</body>
+</html>
