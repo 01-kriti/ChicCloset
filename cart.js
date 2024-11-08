@@ -3,7 +3,7 @@
 
    // Function to add item to the cart
    function addToCart() {
-       const productName = "Successfully";  // Replace with dynamic name based on the product
+       const productName = "Ethnovog";  // Replace with dynamic name based on the product
        const productSize = document.querySelector('input[name="size"]:checked') ? document.querySelector('input[name="size"]:checked').nextElementSibling.innerText : null;
        const productPrice = "₹2,940";  // Replace with dynamic price based on the product
    

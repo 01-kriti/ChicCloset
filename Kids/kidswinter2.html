@@ -173,9 +173,6 @@
             <li class="nav-item">
               <a class="nav-link" href="homepage.html">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" aria-expanded="false">Categories</a>
               <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="categoriesDropdown">
@@ -187,10 +184,20 @@
                 <li><a class="dropdown-item" href="sale.html">Sale</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contactus.html">Contact Us</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" aria-expanded="false">Support</a>
+              <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="supportDropdown">
+                <li><a class="dropdown-item" href="contactus.html">Contact Us</a></li>
+                <li><a class="dropdown-item" href="#shipping">Shipping Info</a></li>
+                <li><a class="dropdown-item" href="#returns">Returns & Exchanges</a></li>
+              </ul>
             </li>
-            
+            <li class="nav-item position-relative">
+              <a href="wishlist.html" class="nav-link" aria-label="Wishlist">
+                <i class="bi bi-heart"></i>
+                <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill" id="wishlistCount">0</span>
+              </a>
+            </li>
             <li class="nav-item position-relative">
               <a href="#cart" class="nav-link" aria-label="Cart" onclick="toggleCartSidebar()" >
                 <i class="bi bi-cart"></i>
@@ -210,29 +217,29 @@
             <!-- Left image thumbnails -->
             <div class="col-md-2">
                 <div class="product-images">
-                  <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9478525/2023/10/20/aeda21a7-657b-41e3-80eb-7d4946177ac31697799350537TheRoadsterLifestyleCoWomenSelfDesignTealGreenJumperDress1.jpg" alt="Product 1" onclick="changeImage(this.src)" />
+                  <img src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/26291546/2023/12/7/001893ee-fc1f-4d1f-a458-f2360a50478e1701929300135arielUnisexKidsBluePrintedHoodedSweatshirt1.jpg" alt="Product 1" onclick="changeImage(this.src)" />
                     
-                  <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9478525/2023/10/20/d8f94663-060c-495a-a9a8-0832bf3dffe61697799350544TheRoadsterLifestyleCoWomenSelfDesignTealGreenJumperDress2.jpg" alt="Product 2" onclick="changeImage(this.src)" />
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9478525/2023/10/20/8db9e1d2-8342-4a2b-81ca-2b8efcb95ad91697799350556TheRoadsterLifestyleCoWomenSelfDesignTealGreenJumperDress4.jpg" alt="Product 3" onclick="changeImage(this.src)" />
+                  <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26291546/2023/12/7/a5053376-c9e0-497d-8476-cbbb058523261701929300117arielUnisexKidsBluePrintedHoodedSweatshirt2.jpg"alt="Product 2" onclick="changeImage(this.src)" />
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26291546/2023/12/7/f87c575e-9cdf-4aec-89c2-1a62bd37f5011701929300124arielUnisexKidsBluePrintedHoodedSweatshirt5.jpg" alt="Product 3" onclick="changeImage(this.src)" />
                     
-                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9478525/2023/10/20/d93a9090-7155-4ef5-b625-ad647ea0d2dd1697799350561TheRoadsterLifestyleCoWomenSelfDesignTealGreenJumperDress5.jpg" alt="Product 4" onclick="changeImage(this.src)" />
+                    <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26291546/2023/12/7/3f3d9bc3-7a74-402c-accc-0438f175cfc11701929300093arielUnisexKidsBluePrintedHoodedSweatshirt7.jpg" alt="Product 4" onclick="changeImage(this.src)" />
                 </div>
             </div>
 
             <!-- Main Product Image -->
             <div class="col-md-4">
                 <div class="main-product-image">
-                  <img src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9478525/2023/10/20/aeda21a7-657b-41e3-80eb-7d4946177ac31697799350537TheRoadsterLifestyleCoWomenSelfDesignTealGreenJumperDress1.jpg"alt="Product 1" id="mainProductImage" class="img-fluid" style="max-height: 500px; width: auto;"/>
+                  <img src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/26291546/2023/12/7/001893ee-fc1f-4d1f-a458-f2360a50478e1701929300135arielUnisexKidsBluePrintedHoodedSweatshirt1.jpg"alt="Product 1" id="mainProductImage" class="img-fluid" style="max-height: 500px; width: auto;"/>
                 </div>
             </div>
 
             <!-- Product Details -->
             <div class="col-md-6 product-details">
-                <h2>Ethnovog</h2>
-                <p>Women Self Design Jumper Dress</p>
+                <h2>MiArcus</h2>
+                <p>Unisex Kids Printed Sweatshirt</p>
                 <div class="price">
-                  Rs.874<span class="original-price">Rs.2499</span>
-                    <span class="discount">65% Off</span>
+                  Rs.448<span class="original-price">Rs.2999</span>
+                    <span class="discount">60% Off</span>
                 </div>
 
                 <!-- Size Selection -->
